@@ -1,0 +1,8 @@
+flask
+numpy
+scikit-learn
+gensim
+nltk
+
+pandas
+tqdm

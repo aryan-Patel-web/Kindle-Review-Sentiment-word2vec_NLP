@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kindle Review Sentiment Analysis</title>
+    <style>
+        body {
+            background: #f5f7fa;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 32px 36px 28px 36px;
+        }
+        h1 {
+            text-align: center;
+            color: #2d3a4b;
+            margin-bottom: 28px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        textarea {
+            min-height: 120px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #d1d9e6;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border 0.2s;
+        }
+        textarea:focus {
+            border: 1.5px solid #4f8cff;
+            outline: none;
+        }
+        button {
+            background: linear-gradient(90deg, #4f8cff 0%, #38c6ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #38c6ff 0%, #4f8cff 100%);
+        }
+        .result {
+            margin-top: 24px;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .result.positive {
+            background: #e6f9ed;
+            color: #1a7f37;
+            border: 1px solid #b2f2d7;
+        }
+        .result.negative {
+            background: #ffeaea;
+            color: #c0392b;
+            border: 1px solid #ffb3b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kindle Review Sentiment Analysis</h1>
+        <form method="post">
+            <textarea name="review" placeholder="Paste your Kindle review here..." required>{{ review }}</textarea>
+            <button type="submit">Analyze Sentiment</button>
+        </form>
+        {% if prediction %}
+            <div class="result {{ 'positive' if prediction == 'Positive' else 'negative' }}">
+                <strong>Prediction:</strong> {{ prediction }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
